@@ -1,15 +1,11 @@
-import React from 'react';
-import './styles/global.css'
-import Routes from './routes'
+import React from "react";
+import "./styles/global.css";
+import Routes from "./routes";
 
-import 'leaflet/dist/leaflet.css'
-
-// JSX - JavaScript XML
+import "leaflet/dist/leaflet.css";
 
 function App() {
-  return (
-    <Routes />
-  );
+  return <Routes />;
 }
 
 export default App;

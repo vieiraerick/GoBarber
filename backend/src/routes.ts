@@ -1,22 +1,15 @@
-import { Router } from 'express'
-import multer from 'multer'
-import uploadConfig from './config/upload'
-import OrphanagesController from './controllers/OrphanagesController'
+import { Router } from "express";
+import multer from "multer";
+import uploadConfig from "./config/upload";
+import PlacesController from "./controllers/PlacesController";
 
-const routes = Router()
-const upload = multer(uploadConfig)
+const routes = Router();
+const upload = multer(uploadConfig);
 
-process.on('unhandledRejection', err => console.error(err))
+process.on("unhandledRejection", (err) => console.error(err));
 
-// MVC
+routes.post("/places", upload.array("images"), PlacesController.create);
+routes.get("/places/:id", PlacesController.show);
+routes.get("/places", PlacesController.index);
 
-// Model
-// Views
-// Controllers
-
-routes.post('/orphanages', upload.array('images'), OrphanagesController.create)
-routes.get('/orphanages/:id', OrphanagesController.show)
-routes.get('/orphanages', OrphanagesController.index)
-
-export default routes
-
+export default routes;
